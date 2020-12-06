@@ -1,0 +1,62 @@
+{
+  "name": "asteroids",
+  "title": "Asteroids",
+  "description": "Game of Asteroids",
+  "version": "1.0.0",
+  "agents": [2],
+  "configuration": {
+    "canvasSize": {
+      "description": "[canvasWidth, canvasHeight]"
+    },
+    "episodeSteps": {
+      "description": "Maximum number of steps the environment can run. Total is this number -1.",
+      "type": "integer",
+      "minimum": 2,
+      "default": 1000
+    },
+    "shipFrame": {
+      "description": "Standard ship frame."
+    },
+    "agentTimeout": {
+      "description": "Obsolete field kept for backwards compatibility, please use observation.remainingOverageTime.",
+      "type": "number",
+      "minimum": 0,
+      "default": 60
+    },
+    "actTimeout": 1
+  },
+  "reward": {
+    "description": "Player's current score.",
+    "type": "integer",
+    "default": 0
+  },
+  "observation": {
+    "asteroids": {
+      "description": "List of asteroids."
+    },
+    "lastOpponentAction": {
+      "description": "action returned by opponent at previous step. None on the first step.",
+      "type": "array"
+    },
+    "remainingOverageTime": 60,
+    "score": {
+      "description": "Current score of the agent.",
+      "type": "integer",
+      "default": 0
+    },
+    "shipsOfPlayers": {
+      "description": "List of ships of players."
+    },
+    "step": {
+      "description": "Current step within the episode.",
+      "type": "integer",
+      "shared": true,
+      "minimum": 0,
+      "default": 0
+    }
+  },
+  "action": {
+    "description": "[ship movement action, left weapon action, right weapon action]",
+    "type": "array"
+  }
+}
