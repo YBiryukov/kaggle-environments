@@ -84,7 +84,9 @@ def interpreter(state, env):
     # otherwise get existing data
     else:
         asteroids = player1.observation.asteroids
+        player2.observation.asteroids = asteroids
         ships_of_players = player1.observation.shipsOfPlayers
+        player2.observation.shipsOfPlayers = [ships_of_players[1], ships_of_players[0]]
 
     # process actions of players
     players = [player1, player2]
