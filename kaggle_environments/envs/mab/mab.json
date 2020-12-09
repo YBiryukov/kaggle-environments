@@ -5,19 +5,19 @@
   "version": "1.0.0",
   "agents": [2, 3, 4, 5, 6, 7, 8],
   "configuration": {
-    "episodeSteps": 1200,
+    "episodeSteps": 2000,
     "actTimeout": 0.25,
     "banditCount": {
       "description": "Number of bandits available to choose from. Max action is this number -1.",
       "type": "integer",
       "minimum": 2,
-      "default": 12
+      "default": 100
     },
     "decayRate": {
       "description": "Rate that reward chance threshold increases per step that a bandit is chosen by an agent.",
       "type": "number",
       "minimum": 0,
-      "default": 0.03
+      "default": 0.97
     },
     "sampleResolution": {
       "description": "Maximum value that can be returned by a bandit.",
@@ -34,6 +34,11 @@
   },
   "observation": {
     "remainingOverageTime": 60,
+    "agentIndex": {
+      "description": "The current agent's index within observation.lastActions.",
+      "type": "integer",
+      "defaults": [0, 1, 2, 3, 4, 5, 6, 7]
+    },
     "reward": {
       "description": "Current reward of the agent.",
       "type": "number",
@@ -64,7 +69,6 @@
   "action": {
     "description": "Choice of bandit for the step (min bandit = 0, max bandit = configuration.banditCount - 1)",
     "type": "integer",
-    "minimum": 0,
-    "maximum": 11
+    "minimum": 0
   }
 }
