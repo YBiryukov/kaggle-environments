@@ -1,0 +1,83 @@
+{
+  "name": "sds",
+  "title": "SDS",
+  "description": "Simulations for Drone Swarm",
+  "version": "1.0.0",
+  "agents": [1],
+  "configuration": {
+    "canvasSize": {
+      "description": "[canvasWidth, canvasHeight]",
+      "type": "array",
+      "default": [600, 450]
+    },
+    "dronesAmount": {
+      "description": "Amount of drones in the simulation.",
+      "type": "integer",
+      "minimum": 2,
+      "default": 10
+    },
+    "episodeSteps": {
+      "description": "Maximum number of steps the environment can run. Total is this number -1.",
+      "type": "integer",
+      "minimum": 2,
+      "default": 1000
+    },
+    "agentTimeout": {
+      "description": "Obsolete field kept for backwards compatibility, please use observation.remainingOverageTime.",
+      "type": "number",
+      "minimum": 0,
+      "default": 60
+    },
+    "actTimeout": 1,
+    "simulationConf": {
+      "description": "Configuration, specific to the chosen simulation type",
+      "type": "object",
+      "default": {}
+    },
+    "simulationType": {
+      "description": "Type of the simulation to play.",
+      "enum": ["seed_planter"],
+      "default": "seed_planter"
+    }
+  },
+  "reward": {
+    "description": "Player's current score.",
+    "type": "integer",
+    "default": 0
+  },
+  "observation": {
+    "drones": {
+      "description": "List of drones.",
+      "type": "array",
+      "default": []
+    },
+    "rechargeStation": {
+      "description": "Recharge station for drones.",
+      "type": "object",
+      "default": {}
+    },
+    "remainingOverageTime": 60,
+    "seedStorage": {
+      "description": "Seed storage for drones.",
+      "type": "object",
+      "default": {}
+    },
+    "step": {
+      "description": "Current step within the episode.",
+      "type": "integer",
+      "shared": true,
+      "minimum": 0,
+      "default": 0
+    },
+    "targets": {
+      "description": "List of targets for drones.",
+      "type": "array",
+      "default": []
+    }
+  },
+  "action": {
+    "description": "List of actions of each drone.",
+    "type": "array",
+    "default": []
+  }
+}
